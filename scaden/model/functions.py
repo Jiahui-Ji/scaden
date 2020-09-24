@@ -80,6 +80,17 @@ def get_signature_genes(input_path, sig_genes_complete, var_cutoff=0.1):
     keep = data.var(axis=1) > var_cutoff
     data = data.loc[keep]
     available_genes = list(data.index)
+    
+    new=[0 for x in range(0,len(available_genes))]
+    for i in range(0,len(available_genes)):
+	    x='"'
+	    y=available_genes[i]
+	    z='"'
+	    q=x+y+z
+	    new[i]=q
+
+    available_genes=new
+    
     new_sig_genes = list(set(available_genes).intersection(sig_genes_complete))
     n_sig_genes = len(new_sig_genes)
     print(f"Found {n_sig_genes} common genes.")
